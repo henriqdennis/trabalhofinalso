@@ -1,0 +1,32 @@
+@extends('layouts.app')
+
+@section('content')
+<div class="container">
+    <div class="row justify-content-center">
+        <div class="col-md-8">
+            <div class="card">
+                <div class="card-header">Validação de E-mail</div>
+
+                <div class="card-body">
+                    @if (session('resent'))
+                        <div class="alert alert-success" role="alert">
+                            E-mail reenviado com sucesso.
+                        </div>
+                    @endif
+
+                    Para prosseguir, efetue a validação por meio do E-mail enviado.
+                    <br>
+                    <br>
+                    Não recebeu o E-mail?
+                    <form class="d-inline" method="POST" action="{{ route('verification.resend') }}">
+                        @csrf
+                        <button type="submit" class="btn btn-link p-0 m-0 align-baseline">Enviar Novamente</button>
+                    </form>
+                    <br>
+                    Lembre-se de verificar sua Caixa de Spam!
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+@endsection
